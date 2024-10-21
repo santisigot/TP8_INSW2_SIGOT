@@ -1,0 +1,314 @@
+1)
+
+2)
+
+R1: El programa debe aceptar un número entero positivo como entrada.
+R2: El programa debe seguir estas reglas para transformar el número:
+Si el número es par, debe dividirlo entre 2.
+Si el número es impar, debe multiplicarlo por 3 y sumarle 1.
+R3: El proceso anterior debe repetirse hasta que el número se convierta en 1.
+R4: El programa debe contar cuántas veces se aplican las reglas antes de llegar al 1.
+R5: El programa debe devolver al usuario el número total de pasos realizados.
+R6: El resultado final debe ser mostrado al usuario de manera clara y comprensible.
+Requerimientos No Funcionales (F)
+
+Los requerimientos no funcionales describen cómo debe funcionar el programa en términos de rendimiento y calidad.
+
+F1: El programa debe ejecutarse rápidamente, incluso cuando se ingresa un número grande.
+F2: El código debe ser fácil de leer y mantener, con una buena estructura y comentarios si es necesario.
+F3: El programa debe manejar entradas incorrectas (por ejemplo, números negativos o cero) de manera adecuada, mostrando un mensaje de error.
+F4: El programa debe poder ejecutarse en cualquier plataforma compatible con Python sin depender de librerías externas.
+F5: El programa debe ser preciso, asegurándose de que el cálculo sea correcto en todo momento.
+
+3)
+Test Cases (T)
+T1: Número par
+Descripción: Probar con un número par.
+Entrada: 4
+Resultado esperado: 2 iteraciones (4 → 2 → 1)
+Tipo: Funcional (Caja negra)
+T2: Número impar
+Descripción: Probar con un número impar.
+Entrada: 3
+Resultado esperado: 7 iteraciones (3 → 10 → 5 → 16 → 8 → 4 → 2 → 1)
+Tipo: Funcional (Caja negra)
+T3: Número igual a 1
+Descripción: Probar cuando el número ya es 1.
+Entrada: 1
+Resultado esperado: 0 iteraciones (ya está en 1)
+Tipo: Funcional (Caja negra)
+T4: Verificación de número par
+Descripción: Comprobar que la división entre 2 se aplica correctamente.
+Entrada: 8
+Resultado esperado: 3 iteraciones (8 → 4 → 2 → 1)
+Tipo: Unitario (Caja blanca)
+T5: Verificación de número impar
+Descripción: Comprobar que la multiplicación por 3 más 1 se aplica correctamente.
+Entrada: 7
+Resultado esperado: 16 iteraciones
+Tipo: Unitario (Caja blanca)
+T6: Número negativo
+Descripción: Probar con un número negativo.
+Entrada: -5
+Resultado esperado: Mensaje de error.
+Tipo: Funcional (Caja negra)
+T7: Entrada no válida (no entero)
+Descripción: Probar con una entrada que no sea un número entero.
+Entrada: 3.5 o "abc"
+Resultado esperado: Mensaje de error.
+Tipo: Funcional (Caja negra)
+T8: Número cero
+Descripción: Probar con el número 0.
+Entrada: 0
+Resultado esperado: Mensaje de error.
+Tipo: Funcional (Caja negra)
+
+4) 
+imagen
+
+5)
+En la revisión del código, desde nuestro punto de vista, encontramos los siguioentes problemas:
+
+Mala indentación: El código dentro del while y el if/else no está bien alineado. Esto causaría errores al ejecutarlo. Se debe arreglar la indentación.
+
+Variable incorrecta: Al final, la función intenta devolver una variable que no existe (iter). Debe devolver iteraciones.
+
+No maneja entradas incorrectas: No hay validación para asegurarse de que el número sea positivo. Si se ingresa un número negativo o cero, el código no funcionará bien. Hay que agregar una validacion para estos casos.
+
+En resumen, hay 3 problemas que se deben corregir para que el código funcione bien.
+
+6)
+Paso 1: Validación de casos de test previos
+Revisamos los test anteriores y funcionan corrrectamente
+
+Paso 2: Agregar nuevos casos de prueba
+
+T9 - Entrada límite superior del sistema
+   Descripción: Probar con un número muy grande para validar que el algoritmo soporta el límite superior de entrada.
+   Entrada: 2^{32}
+   Esperado: Completa la secuencia correctamente sin errores de desbordamiento.
+   ipo: Funcional (Caja negra)
+
+T10 - Entrada límite inferior del sistema
+    Descripción: Probar con el valor mínimo permitido por el sistema.
+    Entrada: -2^{31}
+    Esperado: Mensaje de error, ya que los valores negativos no son válidos.
+    Tipo: Funcional (Caja negra)
+
+Paso 4: Registrar defectos encontrados 
+
+Defectos encontrados:
+  T9 - Entrada límite superior del sistema: El algoritmo se comportó de manera ineficiente con entradas muy grandes, generando un error de desbordamiento.
+Se identificó un defecto relacionado con la falta de manejo de grandes números.
+  T10 - Entrada límite inferior del sistema: El sistema arrojó un mensaje de error correcto cuando se probó con el límite inferior permitido,
+por lo que no se encontraron defectos en este caso.
+
+Resumen de defectos:
+-Total de defectos en Sesión: 1 defecto encontrado.
+-Acción correctiva: Revisar el manejo de grandes números en el algoritmo de Collatz,
+asegurando que el sistema pueda procesar entradas grandes sin errores de desbordamiento.
+
+
+
+
+7)
+Sesión 1: Ejecución de Casos de Prueba
+T4: Verificación de número par
+Entrada: 8
+Resultado esperado: 3 iteraciones
+Resultado real: collatz_steps(8) devuelve 3 (correcto)
+
+T5: Verificación de número impar
+Entrada: 7
+Resultado esperado: 16 iteraciones
+Resultado real: collatz_steps(7) devuelve 16 (correcto)
+Defectos encontrados en la Sesión 1: 0 defectos.
+
+Reparaciones
+No se requieren reparaciones ya que no se encontraron defectos.
+
+Sesión 2: Nuevas Ejecuciones
+
+T4: Verificación de número par
+Resultado real: collatz_steps(8) sigue devolviendo 3 (correcto)
+
+T5: Verificación de número impar
+Resultado real: collatz_steps(7) sigue devolviendo 16 (correcto)
+
+Defectos encontrados en la Sesión 2: 0 defectos.
+
+8) 
+Sesión 1: Ejecución de Casos de Prueba Funcional
+Casos de prueba a ejecutar:
+
+T1: Número par
+Entrada: 4
+Resultado esperado: 2 iteraciones
+Resultado real: collatz_steps(4) devuelve 2 (correcto)
+
+T2: Número impar
+Entrada: 3
+Resultado esperado: 7 iteraciones
+Resultado real: collatz_steps(3) devuelve 7 (correcto)
+
+T3: Número igual a 1
+Entrada: 1
+Resultado esperado: 0 iteraciones
+Resultado real: collatz_steps(1) devuelve 0 (correcto)
+
+T6: Número negativo
+Entrada: -5
+Resultado esperado: Mensaje de error.
+Resultado real: collatz_steps(-5) lanza ValueError (correcto)
+
+T7: Entrada no válida (no entero)
+Entrada: 3.5
+Resultado esperado: Mensaje de error.
+Resultado real: collatz_steps(3.5) lanza ValueError (correcto)
+
+Entrada: "abc"
+Resultado esperado: Mensaje de error.
+Resultado real: collatz_steps("abc") lanza ValueError (correcto)
+
+T8: Número cero
+Entrada: 0
+Resultado esperado: Mensaje de error.
+Resultado real: collatz_steps(0) lanza ValueError (correcto)
+Defectos encontrados en la Sesión 1: 0 defectos.
+
+Reparaciones
+No se requieren reparaciones, ya que todos los casos de prueba funcionales han pasado exitosamente.
+
+Sesión 2: Nuevas Ejecuciones
+Dado que todos los casos de prueba funcionales fueron exitosos en la sesión anterior, se ejecutarán nuevamente para confirmar la consistencia:
+
+T1: Número par
+Resultado real: collatz_steps(4) sigue devolviendo 2 (correcto)
+
+T2: Número impar
+Resultado real: collatz_steps(3) sigue devolviendo 7 (correcto)
+
+T3: Número igual a 1
+Resultado real: collatz_steps(1) sigue devolviendo 0 (correcto)
+
+T6: Número negativo
+Resultado real: collatz_steps(-5) sigue lanzando ValueError (correcto)
+
+T7: Entrada no válida (no entero)
+Resultado real: collatz_steps(3.5) sigue lanzando ValueError (correcto)
+Resultado real: collatz_steps("abc") sigue lanzando ValueError (correcto)
+
+T8: Número cero
+Resultado real: collatz_steps(0) sigue lanzando ValueError (correcto)
+Defectos encontrados en la Sesión 2: 0 defectos.
+
+9) 
+Se cumplen los 3 requisitos:
+
+Todos los casos de prueba fueron ejecutados exitosamente al menos una vez.
+No hubo casos de prueba no ejecutados.
+Todos los requerimientos fueron verificados.
+
+10) 
+Sesiones realizadas y defectos encontrados:
+
+1. Sesión S1 (Unitarios): 0 defectos
+2. Sesión S2 (Unitarios): 0 defectos
+3. Sesión S1 (Funcionales): 0 defectos
+4. Sesión S2 (Funcionales): 0 defectos
+
+Total de sesiones realizadas: 4
+Total de defectos encontrados: 0
+
+11)
+PCE por fase:
+
+1. Fase de Pruebas Unitarias:
+   - Total de pruebas realizadas: 2
+   - Total de defectos: 0
+   - PCE: 100%
+
+2. Fase de Pruebas Funcionales:
+   - Total de pruebas realizadas: 6
+   - Total de defectos: 0
+   - PCE: 100%
+
+
+12) 
+para calcular la densidad de defectos: 
+Datos:
+- Número de defectos: 5
+- Tamaño del programa (LOC): 18
+
+Cálculo:
+(5 / 18) × 1000 ≈ 277.78
+
+Resultado:
+Osea que el programa tiene aproximadamente 277.78 defectos por cada 1000 líneas de código.
+
+13)
+El TEP en Kanban es el tiempo que tarda un trabajo en completarse desde que se comienza hasta que se entrega, 
+es importante porque nos ayuda a entender cuánto tiempo lleva hacer las cosas y nos permite identificar problemas en el proceso.
+El TEP es una herramienta clave para hacer que nuestro trabajo sea más eficiente y para asegurarnos de que nuestros clientes estén satisfechos.
+
+14)
+Utilizando el modelo de regresión lineal, la ecuación es:
+
+Defectos= 11.4 + 0.1 * dia
+
+Predicción para los días:
+Día 0: 11.4 defectos
+Día 1: 11.5 defectos
+Día 2: 11.6 defectos
+Día 3: 11.7 defectos
+Día 4: 11.8 defectos
+Día 6: 12.0 defectos
+Día 8: 12.2 defectos
+Día 9: 12.3 defectos
+
+15)
+
+16)
+Incrementar el uso del PCE en el desarrollo de software hace que el proceso de pruebas sea más eficiente,
+ya que permite identificar y corregir errores desde las etapas iniciales. Esto reduce la cantidad de problemas
+en las fases finales y, como resultado, disminuye el tiempo total necesario para las pruebas. Además, 
+al mejorar el control sobre la calidad del software, se genera una mayor confianza en su funcionamiento, 
+lo que facilita ofrecer garantías más sólidas sobre el producto.
+
+17)
+a. 
+μ0=0.12def/FP×100FP=12defectos
+Por lo tanto, la expectativa de defectos totales es de 12 defectos
+
+b.
+la cantidad de defectos restantes al finalizar la construcción (antes de V&V) será el porcentaje complementario del PCE,
+es decir, el 11% (1 - PCE) de los defectos totales.
+Por lo tanto, la densidad de defectos al finalizar la construcción es 0.011 defectos por FP
+
+c. 
+Durante el período de V&V (Verificación y Validación), se espera detectar el 89% de los defectos totales,
+ya que el PCE indica que este es el porcentaje de defectos que se encuentra y se corrige antes de liberar el software.
+
+El número de defectos que se planea detectar en V&V será:0.89 * 12 = 10.68defectos
+Por lo tanto, durante el período de V&V, deberían detectarse aproximadamente 11 defectos.
+
+d.
+el hecho de haber detectado 60 defectos en solo tres días, 
+cuando lo esperado para toda la fase de V&V era 11 defectos, 
+indica que el proyecto tiene más defectos de los previstos.
+
+18)
+Existe un fuerte vínculo entre las prácticas de Ingeniería de Software y las metodologías ágiles, aunque a menudo no se reconoce explícitamente.
+Las metodologías ágiles implementan muchos principios bien establecidos de la Ingeniería de Software.
+La adopción de prácticas ágiles puede ayudar a las organizaciones a cumplir con estándares de calidad como CMMI™ nivel 3.
+La flexibilidad de los métodos ágiles aporta valor adicional a los proyectos, pero este valor puede erosionarse si no se presta atención a las prácticas fundamentales de Ingeniería de Software.
+Una encuesta realizada en Argentina mostró que las organizaciones de software perciben una relación entre las metodologías ágiles y las prácticas tradicionales de ingeniería de software.
+Las prácticas ágiles pueden mapearse a los requisitos de marcos de calidad como ISO 9001, mostrando una fuerte correlación entre ambos enfoques.
+Los autores recomiendan integrar conscientemente las prácticas de Ingeniería de Software en las actividades ágiles diarias para maximizar los beneficios de ambos enfoques.
+
+19)
+La aplicación de una multa en el modelo de garantía obliga a la organización a mejorar la calidad del software antes de entregarlo.
+Al aumentar los costos si se encuentran defectos después de la entrega, la empresa se ve motivada a invertir más en pruebas y control de calidad durante el desarrollo.
+Esto hace que el punto de equilibrio se desplace, ya que será más rentable gastar más en prevenir errores desde el principio,
+en lugar de arriesgarse a pagar la multa después.
+
